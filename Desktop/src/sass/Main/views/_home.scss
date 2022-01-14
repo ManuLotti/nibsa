@@ -1,0 +1,323 @@
+/*
+ * Home View
+ * These styles should only apply to the Home and to specific elements whitin it.
+ * 
+*/
+
+// Variables
+#new-home-page {
+  .fullbanner {
+    float: left;
+    width: 100%;
+    margin:0 0 60px 0;
+
+    &.visibledesktop {
+      @include responsive(mobile) { 
+        display: none !important;
+      } 
+    }
+    &.visiblemobile {
+      display: none !important;
+      @include responsive(mobile) { 
+        display: block !important;
+      }  
+    }
+    .box-banner {
+      a {
+        padding: 0;
+        img {
+          width: 100% !important;
+          height: auto !important;
+          max-height: none !important;
+        }
+      }
+      &:not(:first-child) {
+        display:none;
+      }
+    }
+  }
+  #home-content {
+    .block {
+      float: left;
+      width: 100%;
+
+      .cat-link , 
+      .banner-link {
+        float: left;
+        width: 100%;
+        position: relative;
+        align-items: center;
+
+        .cat-text {
+          position: absolute;
+          left: 0;  
+          background: $grey-dark-color;        
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          flex-direction: column;
+          padding: 65px 0;
+          color: $white;
+          p {
+            font-family: $base-font;
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 25px;
+            @include responsive(mobile) {             
+              font-size: 16px;
+            }
+          }
+          h4 {
+            font-family: $base-font;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 35px;    
+            @include responsive(mobile) {             
+              font-size: 25px;
+            }        
+          }
+          button {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 50px;
+            width: 180px;
+            border: 1px solid $white;
+            padding: 0;
+            background: transparent;
+            margin: 0 auto;
+            margin-top: 15px;
+            @include responsive(mobile) {             
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      &.minibanners {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: 130px;
+        @include responsive(mobile) { 
+          margin-bottom: 50px;
+        }
+        .category {
+          flex: 1 0 20%;
+          padding: 10px;
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(0.95);
+          }
+          @include responsive(mobile) { 
+            flex: 0 0 50%;
+          }          
+
+          .cat-img {
+            position: relative;
+            width: 100%;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img {
+              width: 100%;
+              height: auto;
+            }
+            span {
+              position: absolute;
+              bottom: -10px;
+              width: 90%;
+              text-align: center;
+              background: $grey-dark-color;
+              color: $white;
+              font-size: 14px;
+              text-transform: uppercase;
+              padding: 20px 0;
+              max-height: 60px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }              
+      }      
+
+      &.bannerprodcarousel {   
+        margin-bottom: 80px;     
+        .block-title {
+          float: left;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 80px;
+          p {
+            font-family: $base-font;            
+            font-size: 21px;
+            line-height: 25px;            
+            color: $primary-color;
+          }
+          h4 {
+            font-family: $base-font;     
+            color: $primary-color;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 41px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 10px;
+            &:before {  
+              content: "";
+              height: 2px;
+              width: 110px;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              background: $primary-color;
+            }
+          }
+        }
+
+        .blockone, .blocktwo {
+          float: left;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 80px;
+          @include responsive(mobile) {  
+          flex-direction: column;           
+            margin-bottom: 50px;
+          }
+        }
+
+        .blocktwo {
+          margin-bottom: 0
+        }
+
+        .category-banner-left {
+          width: 20%;
+          float: left;
+          position: relative;          
+
+          @include responsive(mobile) {             
+            width: 100%;
+            margin-bottom: 30px;
+          }
+          a {
+            float: left;
+            width: 100%;
+            img {
+              width: 100%;
+              // @include responsive(mobile) {             
+              //   display: none
+              // }
+            }
+            span {
+              position: absolute;
+              bottom: 15px;
+              left: -15px;
+              width: 100%;
+              float: left;
+              text-align: center;
+              background: $primary-color;
+              font-family: $base-font;
+              font-weight: 700;
+              line-height: 20px;
+              padding: 20px;
+              color: #fff;
+              font-size: 20px;
+              text-transform: uppercase;
+
+              @include responsive(mobile) {             
+                left: 0;
+                right: 0;
+                width: 90%;
+                margin: 0 auto;
+                bottom: -30px;
+              }
+            }          
+          }
+        }
+
+        #category-extra-vitrine-1,
+        #category-extra-vitrine-2,
+        #category-extra-vitrine-3 {
+          width: 78%;
+          float: right;
+          padding: 0;
+          @include responsive(mobile) {             
+            width: 100%;
+          }
+        }
+        .prateleira {
+          padding: 0;
+          & > h2 {
+            display: none;
+          }
+        }
+      }
+
+      .catalogo-instucional {
+        float: left;
+        width: 100%;
+        margin-bottom: 70px;  
+
+        .cat-link {
+          justify-content: flex-end;
+          display: flex;
+          @include responsive(mobile) {             
+            flex-direction: column;    
+          }
+          .cat-img {
+            float: right;
+            max-width: 100%;
+            width: 100%;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+        }              
+      }
+
+      &.two-banner {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 70px; 
+
+
+        @include responsive(mobile) {             
+          flex-direction: column;
+        }
+        .left-banner, .right-banner {
+          flex: 0 0 48%;
+          margin-bottom: 10px;
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(0.95);
+          }
+        }
+
+        .banner-link {
+          justify-content: center;  
+          display: flex;           
+          .cat-text {          
+            right: 0;
+            margin: 0 auto;        
+            width: 86%;
+            padding: 40px 0;
+            background: rgba($grey-dark-color, 0.6);
+
+            @include responsive(mobile) {             
+              padding: 15px 0;
+              width: 95%;
+            }
+          }
+        }         
+      }
+    }
+  }  
+}

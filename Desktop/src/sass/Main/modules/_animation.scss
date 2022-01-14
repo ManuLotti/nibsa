@@ -1,0 +1,178 @@
+/* Animations definitions for site usage. ===================================*/
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes center-spin {
+  0% {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+$normalSpin: spin 3s linear infinite;
+$accelSpin: spin 2s ease-in-out infinite;
+$centerSpin: center-spin 2s linear infinite;
+
+@keyframes softBlink {
+      0% {
+          opacity: 1;
+      }
+      15% {
+          opacity: 0.6;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+
+$softBlink: softBlink .3s ease;
+
+@keyframes longBlink {
+      0% {
+          opacity: 1;
+      }
+      50% {
+          opacity: 0.5;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+
+$longBlink: longBlink 1.3s ease;
+
+@keyframes softShrink {
+      0% {
+          transform: scale(1);
+      }
+      15% {
+          transform: scale(0.9);
+      }
+      100% {
+          transform: scale(1);
+      }
+  }
+
+$softShrink: softShrink .3s ease-out;
+
+$softJumpTopVal: 30%;
+@keyframes softJump {
+      0% {
+          top: $softJumpTopVal;
+      }
+      50% {
+          top: ($softJumpTopVal - 10%);
+      }
+      100% {
+          top: $softJumpTopVal;
+      }
+  }
+
+$softJump: softJump .3s ease-in;
+
+@keyframes filterOpen {
+      0% {
+          transform: scaleY(0);
+      }
+      50% {
+          transform: scaleY(0.5);
+      }
+      100% {
+          transform: scaleY(1);
+      }
+  }
+
+$filterOpen: filterOpen .2s ease-in;
+
+//Pulse loader
+$base-line-height: 24px;
+$pulseColor: rgb(239, 93, 149);
+$offColor: rgba($pulseColor, 0.2);
+$pulse-duration: 750ms;
+
+@keyframes pulse {	
+  50% { 
+    background: $pulseColor;
+  } 
+}
+
+// Animations ==============================================================
+
+// Hover FX
+//-- Float & shadow [LINKS]
+
+.float-shadow {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  box-shadow: 0 0 1px transparent;
+  transform: perspective(1px) translateZ(0);
+  
+  &:before {
+    top: 100%;
+    left: 5%;
+    width: 90%;
+    opacity: 0;
+    content: '';
+    z-index: -1;
+    height: 10px;
+    position: absolute;
+    pointer-events: none;
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, transparent 80%);
+  }
+  // &:before
+  
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateY(-5px);
+    /* move the element up by 5px */
+    
+    &:before {
+      opacity: 1;
+      transform: translateY(5px);
+      /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+    }
+    // &:before
+    
+  }
+  // &:hover, &:focus, &:active
+  
+}
+// float & shadow
+
+// Simple floating [LINKS]
+.float-simple {
+  display: inline-block;
+  vertical-align: middle;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  box-shadow: 0 0 1px transparent;
+  transition-timing-function: ease-out;
+  transform: perspective(1px) translateZ(0);
+  
+  &:hover,
+  &:focus,
+  &:active {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  // &:hover, &:focus, &:active
+  
+}
+// Simple floating
+
+// ==================================================================== Hover FX

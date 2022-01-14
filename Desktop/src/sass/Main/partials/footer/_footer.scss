@@ -1,0 +1,307 @@
+/* 
+ * Menu Module
+ * 
+*/
+
+// General Styles ----------------------------------------------
+//footer
+
+#newfooter {
+    #extra-footer-top {    
+        float: left;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-image: url('/arquivos/nibsanew-newsletter.jpg ');
+        background-size: 100%;       
+
+        @include responsive(mobile) {       
+            background-image: none;
+            background-color:$primary-color;
+        }  
+
+        .pre-footer {
+            width: 550px;
+            min-height: 350px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: $primary-color;
+
+            @media only screen and (min-width: 1500px) {
+              width: 55%;
+            }
+
+            .col-newletter {
+                display: flex;                
+                text-align: center;
+                flex-direction: column;
+
+                h2, p {
+                    color: $white;
+                    text-align: center;
+                    font-family: $base-font;
+                    letter-spacing: 0;
+                }
+                p {
+                    font-size: 21px !important;
+                    font-weight: 400 !important;
+                    line-height: 25px;
+                }
+                h2 {
+                    font-size: 30px !important;
+                    font-weight: 700 !important;
+                    line-height: 40px;
+                    margin-bottom: 20px;
+
+                }
+                .newsletter {
+                    fieldset {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        p {
+                            display: none;
+                        }
+                        #newsletterClientEmail {
+                            width: 300px;
+                            height: 50px;
+                            font-family: Open Sans;
+                            font-size: 14px !important;                            
+                            font-weight: 300 !important;                            
+                            letter-spacing: 0em;   
+                            margin-bottom: 5px;                         
+                        }
+                        #newsletterButtonOK {
+                            width: 300px;
+                            height: 50px;
+                            border: 1px solid $white;
+                            color: $white;
+                            background: transparent;;
+                        }
+
+                        &.error,
+                        &.success {
+                            label {
+                                font-size: 14px ;
+                                font-weight: 300;
+                                line-height: 20px;
+                                color: $white;
+                                margin-bottom: 10px;
+                            }
+                        }                        
+                    }
+                    .newsletter-button-back {
+                        background: $white;
+                        border-radius: 0;
+                        border: 0;
+                        width: 150px;
+                        color: #primary-color;
+                    }
+                }
+            }            
+        }
+    }
+    #desktopfooter {
+        display: block;
+        float: left;
+        width: 100%;
+        background: $blue-dark-color;
+        padding: 50px 0;
+        border-top: 10px solid green;
+
+        .column {
+            &.row-info {
+                float: right;
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                @include responsive(mobile) { 
+                    flex-direction: column;
+                }
+
+                .five-colum {
+                    float: left;
+                    width: 20%;
+                    display: flex;
+                    flex-direction: column;
+                    padding-right: 15px;
+                    @include responsive(mobile) { 
+                        width: 100%;
+                        padding-right: 0px;
+                    } 
+
+                    &.canal-de-denuncias {
+                        .col-info {
+                            h5 {
+                                border: 0;
+                            }
+                        }
+                    } 
+
+                    &.canal-de-atencion {
+                        width: 80%;
+                        @include responsive(mobile) { 
+                            width: 100%;
+                        }
+                        .col-info{
+                            ul {
+                                display: flex;
+                                @include responsive(mobile) { 
+                                    display: none;
+                                }
+                                li {
+                                    padding-right: 15px;
+                                    @include responsive(mobile) { 
+                                        padding: 0 0 20px 0; 
+                                    }
+                                    &:last-child {
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        } 
+                    }                  
+                }
+                .col-info {
+                    float: left;
+                    width: 100%;
+                    @include responsive(mobile) { 
+                        margin-bottom: 20px;                        
+                    }
+                    h5 {                    
+                        color: $white;
+                        font-family: $base-font;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        text-align: left;
+                        margin-bottom: 5px;
+                        margin-bottom: 10px;
+                        border-bottom: 2px solid #fff;
+                        padding-bottom: 5px;
+
+                        a {
+                            color: $white;
+                        }
+                        @include responsive(mobile) { 
+                            &:before {
+                                content: "\f107";
+                                font-family: 'FontAwesome';
+                                font-size: 20px;
+                                font-weight: 400;
+                                display: inline-block;
+                                float: right;
+                                line-height: 20px;
+                                position: relative;
+                            }
+                            &.active {
+                                &:before {
+                                    content: "\f106";
+                                }
+                            }
+                        }
+                    }
+                    ul {
+                        float: left;
+                        width: 100%;  
+                        margin-bottom: 40px;
+                        @include responsive(mobile) { 
+                            margin-bottom: 20px;                        
+                        }
+                        li {
+                            float: left;
+                            width: 100%;  
+                            &.marginbottom {
+                                margin-bottom: 40px;   
+                                @include responsive(mobile) { 
+                                    margin-bottom: 20px;                        
+                                }
+                            }
+                            &.margintop {
+                                margin-top: 40px;   
+                                @include responsive(mobile) { 
+                                    margin-top: 20px;                        
+                                }
+                            }                          
+                            a, p, strong {
+                                float: left;
+                                width: 100%;
+                                font-size: 12px;
+                                color: $white;
+                                font-weight: 400;
+                                line-height: 25px;
+                            } 
+                            strong {
+                                font-weight: 700;                                
+                            }
+                        }
+
+                        &.col-data {
+                            @include responsive(mobile) { 
+                                display: none;
+                                &.active {
+                                    display: block;
+                                    margin-bottom: 20px;
+                                }
+                            }                            
+                        }
+                    }
+
+                    &.denuncias {
+                       @include responsive(mobile) { 
+                           h5 {
+                            &:before {
+                                display: none;
+                            }
+                           }                      
+                       } 
+                    }
+                }
+            }
+        }
+    }
+    #extra-footer-bottom {
+        float: left;
+        width: 100%;
+        padding: 10px 0;
+        background: #001C2F;
+
+        .copyrights {
+            text-align: left;
+            @include responsive(mobile) { 
+                text-align: center;
+            }
+            p {
+                line-height: 20px;
+                padding:  10px 0;                            
+            }
+        }
+        .cel_nopad {
+            ul {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                @include responsive(mobile) { 
+                    justify-content: center;
+                }                
+                li {
+                    img {
+                        margin-bottom: 0; 
+                        &.compra-segura {
+                            width: 180px;
+                        }
+                    }
+                }           
+            }
+        }
+    }
+    //footer
+}

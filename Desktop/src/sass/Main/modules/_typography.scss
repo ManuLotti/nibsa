@@ -1,0 +1,24 @@
+// Set your general Fonts needs here. Only add a font if it's
+// used on the Project as a whole.
+
+// Insert your custom fonts from this point
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+//Default Weights
+$thin:        100;
+$extra-light: 200;
+$light:       300;
+$regular:     400;
+$medium:      500;
+$semi-bold:   600;
+$bold:        700;
+$extra-bold:  800;
+$black-bold:  900;
+
+//Default Font
+$base-font-size: 12px;
+$base-font-weight: $regular;
+
+$base-font:'Open Sans', sans-serif;
+
+$fontAwesome:  "FontAwesome";

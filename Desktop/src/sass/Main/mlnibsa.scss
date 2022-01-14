@@ -1,0 +1,31 @@
+/*
+ * Main Desktop Styles
+ * By Brandlive
+ * Refrain form making modifications, these styles are the foundation
+ * of the Template & Override Styles Structures.
+ *
+*/
+
+// Modules
+@import "modules/reset";
+@import "modules/colors";
+@import "modules/typography";
+@import "modules/variables";
+@import "modules/animation";
+@import "modules/responsive";
+@import "modules/base"; // Always last
+
+// Partials & Resources
+@import "partials/header/header";
+@import "partials/footer/footer";
+
+@import "partials/shelf-product/shelf-product";
+
+// Views
+@import "views/home";
+//@import "views/grid";
+@import "views/product";
+@import "views/estaticas";
+
+
+@import "archivos-viejos/mldev";

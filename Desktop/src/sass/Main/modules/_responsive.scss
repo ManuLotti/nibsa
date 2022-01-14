@@ -1,0 +1,25 @@
+//Responsive Breakpoints definitions
+$breakpoints: (
+  'mobile'  : ( max-width:  991px ),
+  'desktop' : ( min-width: 992px )
+);
+ 
+@mixin responsive($name) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+  // Advice on missing breakpoint
+  @else {
+    @warn "Value [#{$name}] not found. " + "Check the [$breakpoints] map.";
+  }
+}// Responsive Mixin
+
+/*  Usage:
+    @include responsive(definedVariable) {
+      [Css Styles]
+    }
+*/

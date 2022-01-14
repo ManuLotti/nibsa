@@ -1,0 +1,12 @@
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = nibsa.vtexlocal.com.br
+DNS.2 = *.nibsa.vtexlocal.com.br
+DNS.3 = nibsa.vtexcommercestable.com.br
+DNS.4 = *.nibsa.vtexcommercestable.com.br
+DNS.5 = nibsa.vtexcommercebeta.com.br
+DNS.6 = *.nibsa.vtexcommercebeta.com.br
+DNS.7 = nibsa.myvtex.com
+DNS.8 = *.nibsa.myvtex.com

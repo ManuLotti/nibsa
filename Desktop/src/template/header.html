@@ -1,0 +1,132 @@
+<div id="extra-header-top"></div>
+
+<header id="newheader" class="header-container">
+
+    <vtex.cmc:newespaciodecomunicacion />  
+
+  <div class="headband container-fluid">
+    <div class="row">
+      <p class="text-center">Le notificamos a todos nuestros clientes que los días 24 y 31 de Diciembre no
+      estaremos trabajando, por lo que el despacho en tienda estará suspendido durante estos 2 días.</p>
+    </div>
+  </div>
+
+  <!-- .header -->
+  <div id="new-top-menu">
+    <div class="container">
+
+      <div class="button-menu-xs">
+
+        <button class="btn btn-default btn-open-menu-xs btn-menu-xs" data-id="#menu-mobile"><i class="fa fa-bars"></i></button>
+
+        <div id="menu-mobile" style="display: none;">
+          <div class="header-menu-mobile visible-xs visible-sm">
+            <span class="close-menu pull-right btn-menu-xs" data-id="#menu-mobile"><i class="fa fa-times"></i></span>
+          </div> 
+
+          <div class="menu-mobile-account">
+
+            <vtex.cmc:newCustomMenuMobile />            
+
+          </div>
+
+          <vtex.cmc:newespaciodecomunicacion />
+
+        </div>
+      </div>
+
+      <div class="row-logo ">
+        <a href="/" title="Nibsa" class="link-logo"><img src="/arquivos/newlogo.jpg" class="logo" /></a>
+      </div>
+      <!-- .logo -->
+      <div class="cont-nav">
+        <div class="navbar-icon col-xs-12">                
+          
+          <div class="search">    
+            
+            <a id="search-link" href="#"></a>
+            <script type="text/javascript">
+              jQuery('#search-link').click(function() {
+                jQuery(this).parent().toggleClass('active');
+              });
+            </script>
+            <!-- .search --> 
+
+            <vtex.cmc:fullTextSearchBox />  
+
+                                                    
+          </div>   
+
+          <div class="login-minicart">            
+            <div class="login">
+              <a href="/account" title="Login" class="btn-login">
+                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 0C9.12112 0 7.75574 0.271591 6.48182 0.799265C5.2079 1.32694 4.05039 2.10036 3.07538 3.07538C1.10625 5.04451 0 7.71523 0 10.5C0 13.2848 1.10625 15.9555 3.07538 17.9246C4.05039 18.8996 5.2079 19.6731 6.48182 20.2007C7.75574 20.7284 9.12112 21 10.5 21C13.2848 21 15.9555 19.8938 17.9246 17.9246C19.8938 15.9555 21 13.2848 21 10.5C21 9.12112 20.7284 7.75574 20.2007 6.48182C19.6731 5.2079 18.8996 4.05039 17.9246 3.07538C16.9496 2.10036 15.7921 1.32694 14.5182 0.799265C13.2443 0.271591 11.8789 0 10.5 0ZM5.3235 17.094C5.775 16.149 8.526 15.225 10.5 15.225C12.474 15.225 15.225 16.149 15.6765 17.094C14.2059 18.2658 12.3804 18.9027 10.5 18.9C8.547 18.9 6.7515 18.228 5.3235 17.094ZM17.178 15.5715C15.6765 13.7445 12.033 13.125 10.5 13.125C8.967 13.125 5.3235 13.7445 3.822 15.5715C2.70499 14.1169 2.09965 12.334 2.1 10.5C2.1 5.8695 5.8695 2.1 10.5 2.1C15.1305 2.1 18.9 5.8695 18.9 10.5C18.9 12.411 18.249 14.175 17.178 15.5715ZM10.5 4.2C8.463 4.2 6.825 5.838 6.825 7.875C6.825 9.912 8.463 11.55 10.5 11.55C12.537 11.55 14.175 9.912 14.175 7.875C14.175 5.838 12.537 4.2 10.5 4.2ZM10.5 9.45C10.0823 9.45 9.68168 9.28406 9.38631 8.98869C9.09094 8.69332 8.925 8.29272 8.925 7.875C8.925 7.45728 9.09094 7.05668 9.38631 6.76131C9.68168 6.46594 10.0823 6.3 10.5 6.3C10.9177 6.3 11.3183 6.46594 11.6137 6.76131C11.9091 7.05668 12.075 7.45728 12.075 7.875C12.075 8.29272 11.9091 8.69332 11.6137 8.98869C11.3183 9.28406 10.9177 9.45 10.5 9.45Z" fill="#006DB8"/>
+                </svg>
+
+              </a>
+            
+            </div>
+
+            <div class="mini-cart col-mini-cart">
+              
+              <div id="mini-cart-control" class="hidden">
+                <vtex.cmc:miniCart />
+                <vtex.cmc:AmountItemsInCart />
+              </div>
+              
+              <a id="mini-cart-link" href="#">
+                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 4.21714e-05C0.734784 4.21714e-05 0.48043 0.105399 0.292893 0.292936C0.105357 0.480472 0 0.734826 0 1.00004C0 1.26526 0.105357 1.51961 0.292893 1.70715C0.48043 1.89469 0.734784 2.00004 1 2.00004H3.22L5.844 12.5C6.067 13.39 6.864 14 7.781 14H19.251C20.154 14 20.921 13.4 21.158 12.53L23.75 3.00004H7L7.5 5.00004H21.156L19.25 12H7.78L5.157 1.50004C5.04865 1.06927 4.79888 0.68732 4.44768 0.415356C4.09648 0.143391 3.66418 -0.00285293 3.22 4.21714e-05H1ZM18 14C16.355 14 15 15.355 15 17C15 18.645 16.355 20 18 20C19.645 20 21 18.645 21 17C21 15.355 19.645 14 18 14ZM9 14C7.355 14 6 15.355 6 17C6 18.645 7.355 20 9 20C10.645 20 12 18.645 12 17C12 15.355 10.645 14 9 14ZM9 16C9.564 16 10 16.436 10 17C10 17.564 9.564 18 9 18C8.436 18 8 17.564 8 17C8 16.436 8.436 16 9 16ZM18 16C18.564 16 19 16.436 19 17C19 17.564 18.564 18 18 18C17.436 18 17 17.564 17 17C17 16.436 17.436 16 18 16Z" fill="#006DB8"/>
+                </svg>
+                
+                <span class="quantity"></span>
+              </a>
+              
+              <div id="mini-cart-holder-full">
+                <div class="mini-cart-header">
+                    <a class="close" href="#"></a>
+                </div>
+                <!-- Header -->
+          
+                <div class="items"></div>
+                <!-- Products -->
+          
+                <div class="mini-cart-footer">
+          
+                    <div class="totals">
+                        <span class="info">Total</span>
+                        <span class="money"></span>
+                    </div>
+                    <!-- Totals -->
+          
+                    <div class="mini-cart-botao">
+                        <a href="/checkout/#/cart" class="btn btn-block btn-verde btn-finalizar-compra">Realizar pedido</a>
+                        <meta name="facebook-domain-verification" content="pcrv4x9pnbfzdxs3k9oufem24g34fi" />
+                    </div>
+                    <!-- Actions -->
+          
+                </div>
+                <!-- Footer -->
+          
+              </div>
+            
+            </div>          
+          </div>                          
+
+        </div>
+
+        <ul class="navbar-nav col-xs-12">
+
+          <vtex.cmc:newCustomMenu />
+                  
+        </ul> 
+
+      </div>
+  
+    </div>
+  
+  </div>
+
+</header>
+

@@ -1,0 +1,113 @@
+#videos-page {
+  .destacado-videos {
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+  }
+  .title-top {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-family: "Open Sans",sans-serif;
+    color: #006DB8 !important;
+    font-weight: bold;
+    font-size: 30px !important;
+    line-height: 41px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 10px;
+    letter-spacing: 0;
+    margin-bottom: 40px;
+    strong {
+      margin-left: 10px;
+    }
+  }
+  .texto-video p {
+      font-size: 12px;
+      line-height: 21px;
+      color: #666;
+      margin-right: 0;
+      float: left;
+      margin-bottom: 40px;
+  }
+}
+
+#garantias-page { 
+  .box-banner a img {
+    height: auto;
+    margin-top: 0 !important;
+  } 
+  #garantias-content {
+    padding: 50px 0;
+    #contact-container {
+      padding: 0;
+      padding-bottom: 50px;
+      .tel-icon {
+        display: none;
+      }
+    }
+    #cambios-devoluciones {
+      padding: 0;
+      padding-bottom: 50px;
+      div {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 0;
+        line-height: 24px;
+        font-size: 14px;
+        .garantia-title {
+            color: #016DB6;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+        .condiciones-garantia {
+          padding-left: 0;
+          padding-top: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    .garantias-productos {
+      .condiciones-garantia {
+        padding-left: 0;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 300;
+        padding-top: 1vw;
+        width: 100%;
+        p {
+          width: 100%;
+        }
+      }
+    }
+    .anos-garantia-productos {
+      .anos {
+        color: #016DB6;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 10px;
+        padding: 0;        
+      }
+      p {
+          padding-left: 0;
+          font-size: 14px;
+          line-height: 24px;
+          font-weight: 300;
+          padding-top: 1vw;
+          width: 100%;
+        }
+    }
+  }
+}
+
+#institucional-page #institucional-content {
+    margin-top: 50px;
+}
+
+#login-page {
+    margin-left: 0;
+}

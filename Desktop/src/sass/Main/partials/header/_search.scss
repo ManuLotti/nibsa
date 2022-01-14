@@ -1,0 +1,142 @@
+/* 
+ * Search Module
+ * 
+*/
+
+// General Styles ----------------------------------------------
+
+header#newheader {
+    .search {
+        display: flex;
+        padding: 15px 0;
+        align-items: center;
+        justify-content: flex-end;
+        .busca {
+            order: unset;
+            position: relative;
+            &:before {
+                font-size: 18px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                margin-top: 0;
+                z-index: 1;
+                content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTkuMzU4IDE4LjU1NjZMMTQuMjQ3NiAxMy40NjIzQzE1LjAwNDcgMTIuNTE4OSAxNS40Nzc5IDExLjI5MjUgMTUuNDc3OSA5Ljk3MTdDMTUuNDc3OSA2Ljk1MjgzIDEzLjAxNzQgNC41IDkuOTg4OTYgNC41QzYuOTYwNTcgNC41IDQuNSA2Ljk1MjgzIDQuNSA5Ljk3MTdDNC41IDEyLjk5MDYgNi45NjA1NyAxNS40NDM0IDkuOTg4OTYgMTUuNDQzNEMxMS4zMTM5IDE1LjQ0MzQgMTIuNTQ0MiAxNC45NzE3IDEzLjQ5MDUgMTQuMjE3TDE4LjYwMDkgMTkuMzExM0MxOC42OTU2IDE5LjQwNTcgMTguODg0OSAxOS41IDE4Ljk3OTUgMTkuNUMxOS4xNjg4IDE5LjUgMTkuMjYzNCAxOS40MDU3IDE5LjM1OCAxOS4zMTEzQzE5LjU0NzMgMTkuMTIyNiAxOS41NDczIDE4Ljc0NTMgMTkuMzU4IDE4LjU1NjZaTTUuNjM1NjUgOS45NzE3QzUuNjM1NjUgNy41MTg4NyA3LjYyMzAzIDUuNjMyMDggOS45ODg5NiA1LjYzMjA4QzEyLjQ0OTUgNS42MzIwOCAxNC4zNDIzIDcuNjEzMjEgMTQuMzQyMyA5Ljk3MTdDMTQuMzQyMyAxMi40MjQ1IDEyLjM1NDkgMTQuMzExMyA5Ljk4ODk2IDE0LjMxMTNDNy42MjMwMyAxNC40MDU3IDUuNjM1NjUgMTIuNDI0NSA1LjYzNTY1IDkuOTcxN1oiIGZpbGw9IiM3Nzc3NzciLz48L3N2Zz4=);
+            }
+
+            .fulltext-search-box {
+                width: 500px;
+                border: none;
+                background: #F4F4F4;
+                line-height: 45px;
+                color: #000;
+                padding: 0 15px;
+            }
+            .btn-buscar {
+                position: absolute;
+                right: 0;
+                top: 0;
+                line-height: 45px;
+                padding: 0;
+                width: 40px;
+                text-align: center;
+            }
+        }
+
+        .login-minicart{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .login {
+                display: block;
+                margin-left: 50px;
+            }
+
+            .mini-cart{
+                margin-left: 50px;
+                .btn-mini-cart {
+                    padding: 0;
+                    .mini-cart-qty-admake {
+                        left: -12px;
+                        top: -7px;
+                        width: 20px;
+                        color: $white;
+                        background: $red;
+                        height: 20px;
+                    }
+                }
+                @import "minicart";
+
+            } 
+
+        }        
+        .close-search {
+            display: none !important;
+        }
+    }    
+}
+
+header#newheader {
+    @include responsive(mobile) { 
+        .search {
+            float: right;
+            padding: 0 !important;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            #search-link {
+                float: left;
+                width: 100%;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                &:before {
+                    color: $primary-color;
+                    content: "\f002";
+                    font-family: 'FontAwesome';
+                    font-size: 18px;
+                    float: left;
+                    width: 40px;
+                    height: 40px;
+                }                
+            }
+            .busca {
+                display: none;
+                width: 100% !important;
+                position: absolute !important;
+                left: 0;
+                right: 0;
+                background: white;
+                bottom: -55px;
+                &:before {
+                    display: none;
+                }
+                .fulltext-search-box {
+                    padding: 0 10px;
+                    width: 80%;
+                }
+                .btn-buscar {
+                    width: 20%;
+                    float: right;
+                    color: white;
+                    background: #006db8;
+                    font-size: 11px;
+                    border-radius: 0;
+                    line-height: 45px;
+                }
+            }
+            &.active {
+                #search-link {
+                    &:before {                     
+                        content: "\f00d";
+                    }
+                }
+                .busca {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+// Autocomplete Container

@@ -1,0 +1,398 @@
+/* 
+ * Menu Module
+ * 
+*/
+
+// General Styles ----------------------------------------------
+
+header#newheader {
+    #new-top-menu {  
+        background: #FFFFFF;
+        float: left;
+        width: 100%;
+        margin: 0;
+        border: 0;
+        @include responsive(mobile) { 
+            padding: 10px 0;
+        }
+
+        & > .container {
+            position: relative;
+            @include responsive(mobile) { 
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }                        
+        }                
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            @include responsive(mobile) { 
+                display: none;                
+            }
+            .nav-item {               
+                padding: 0; 
+                margin: 0 25px;      
+                @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                    margin: 0 15px;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                &:hover {    
+                    & > a {
+                        color: $black;                   
+                        font-weight: 600; 
+                        background: transparent;                       
+                        border-bottom: 4px solid $primary-color;
+                    }
+                } 
+                &.dropdown {
+                    & > a {
+                        &:after {
+                            content: "\f107";
+                            font-family: "FontAwesome";
+                            margin-left: 5px;
+                        }
+                    }                                      
+                }
+                & > a {
+                    font-family: $base-font;
+                    font-size: 16px;                
+                    font-weight: 300;
+                    line-height: 40px;   
+                    border-bottom: 4px solid $white;                    
+                    padding: 0 5px;
+                    color: $black;
+                    text-transform: uppercase;
+                    background: transparent;
+                    transition: color 0.3s;
+                    
+                    @media only screen and (min-width: 1150px) and (max-width: 1331px) {
+                        font-size: 14px !important;   
+                    }
+                    @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                        font-size: 12px !important;   
+                    }
+
+                }
+                &.destacado-menuhome {
+                    a {
+                        background: transparent;
+                        font-weight: 600 !important;
+                    }                    
+                } 
+
+                .dropdown-menu {
+                    margin-top: 0;
+                    padding: 0px !important;
+                    box-shadow: none;
+                    background: white;
+                    padding: 0px;
+                    right: 0;
+                    left: -308px;
+                    min-width: auto;
+                    max-width: none;
+                    width: 800px;
+                    height: 350px;
+                    overflow: hidden;
+                    @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                        width: 600px;
+                    }
+                    .row {
+                        margin: 0;
+                        border-top: 0;
+                        width: 100%;
+                        .multi-column-dropdown {
+                            padding: 0;
+                            float: left;
+                            width: 100%;
+                        }
+                        .categories-list {
+                            width: 250px;
+                            float: left;
+                            margin-left: 0;
+                            background: #F2F2F2;
+                            @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                                width: 180px;
+                            }
+                            h3 {
+                                border: 0 !important;
+                                padding: 20px 10px 20px 40px !important;
+                                background: #f4f4f4;                                
+                                .title-submenu {
+                                    padding: 0;
+                                    float: left;
+                                    width: 100%;
+                                    font-family: $base-font;
+                                    font-size: 16px;
+                                    font-weight: 300;
+                                    line-height: 22px;
+                                    letter-spacing: 0em;
+                                    text-align: left;
+                                    @media only screen and (min-width: 1150px) and (max-width: 1331px) {
+                                        font-size: 14px !important;   
+                                    }
+                                    @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                                        font-size: 12px !important;   
+                                    }
+                                    .content-span-selector {
+                                        display: none !important;
+                                    }
+                                }
+                                &:before {
+                                    display: none;                                    
+                                }
+                                &:hover {
+                                    border-right: 5px solid $primary-color !important;
+                                    .title-submenu { 
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+
+                        }
+                        .subcategories-list {
+                            width: calc(100% - 250px);
+                            float: right;
+                            @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                                width: calc(100% - 180px);
+                            }
+                            .submenu-dropdown {
+                                padding: 20px;
+                                height: 360px;
+                                max-height: 360px ;
+                                flex-direction: row ;
+                                overflow: auto ;
+                                align-content: flex-start;
+                                direction: rtl;                                    
+                                flex-wrap: wrap;
+                                display: none;
+
+                                &::-webkit-scrollbar-track {
+                                    background-color: #cccccc;
+                                }
+                                &::-webkit-scrollbar {
+                                    width: 5px;
+                                    background-color: #cccccc;
+                                }
+                                &::-webkit-scrollbar-thumb {
+                                    background-color: $primary-color;
+                                }
+                                li {
+                                    float: left;
+                                    width: 50%;
+                                    margin: 0;
+                                    padding: 0;
+                                    a {
+                                        float: left;
+                                        width: 100%;
+                                        line-height: 18px; 
+                                        letter-spacing: 0;
+                                        color: $black;
+                                        font-size: 16px;
+                                        &:hover {
+                                            color: $primary-color;
+                                        }
+                                        @media only screen and (min-width: 1150px) and (max-width: 1331px) {
+                                            font-size: 14px !important;   
+                                        }
+                                        @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                                            font-size: 12px !important;   
+                                        }
+                                    }
+                                }
+                                &.bano-cocina {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    .bannerMenu{
+                        display: none;
+                    } 
+                    &.soporte {
+                        width: 250px;
+                        height: auto;
+                        .multi-column-dropdown {
+                            padding: 20px;
+                            a {
+                                float: left;
+                                width: 100%;
+                                padding: 0;
+                                h3 {
+                                    float: left;
+                                    width: 100%;
+                                    line-height: 18px; 
+                                    letter-spacing: 0;
+                                    color: $black;
+                                    font-size: 16px;
+                                    margin: 0;
+                                    padding: 10px 0;
+                                    font-weight: 300;
+                                    &:before {
+                                        left: 0;
+                                        margin-right: 5px;
+                                        width: 20px;
+                                        float: left;
+                                        text-align: center;
+                                    }
+                                    @media only screen and (min-width: 1150px) and (max-width: 1331px) {
+                                        font-size: 14px !important;   
+                                    }
+                                    @media only screen and (min-width: 991px) and (max-width: 1150px) {
+                                        font-size: 12px !important;   
+                                    }
+
+                                    &:hover {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }   
+
+    #menu-mobile {
+        .icone-menu {
+            display: none;
+        }    
+        .menu-mobile-account {
+            margin-top: 50px;
+            li {
+                float: left;
+                width: 100%;
+                #ofertas {
+                       padding: 0.75rem 0 0.75rem 0 !important;                   
+                    a {
+                        text-transform: uppercase;
+                        font-size: 14px !important;
+                        margin: 0;                    
+                        color: #3bafda; 
+                        padding: 5px 10px;
+                    }             
+                }
+                &.produc-hogar, &.link-login {
+                    &.active {
+                        h3 {
+                            &:after {
+                                content: '\f107';
+                            }
+                        }
+                    }                    
+                }
+            }
+            .nav-item-mobile {
+                a {
+                    color: #000;
+                    text-transform: uppercase;
+                    float: left;
+                    width: 100%;
+                    font-size: 14px;
+                }
+            }
+            h3 {        
+                text-transform: uppercase;
+                padding: 5px 10px !important;                
+                font-weight: 600 !important;
+                font-size: 14px !important;
+                color: #333333 !important;
+                &:after {
+                    font-family: 'FontAwesome', sans-serif;
+                    float: right;
+                    content: '\f105';
+                    color: #999;
+                    padding-right: 15px;
+                    font-size: 18px;
+                }
+            }        
+            .accordeon {
+                margin: 0;
+                float: left;
+                width: 100%;
+                .accordeon_item {                    
+                    padding: 0.75rem  0 0.75rem 0;
+
+                    h4 {
+                        font-weight: 400;
+                        font-size: 13px;
+                        text-transform: none;
+                        color: #333333;
+                        background: white;
+                        &:after {
+                            font-family: 'FontAwesome', sans-serif;
+                            float: right;
+                            content: '\f105';
+                            color: #999;
+                            padding-right: 15px;
+                            font-size: 18px;
+                        }
+                    } 
+
+                    &.active {
+                        h4 {
+                            &:after {
+                                content: '\f107';    
+                            }
+                        }                        
+                    } 
+
+                    .accordeon_content {
+                        ul {
+                            padding-left: 10px;
+                            border-left: 2px solid #767676;
+                            background: white;
+                            li {                            
+                                padding: 0.75rem  0 0.75rem 0;
+                                &:last-child {
+                                    border-bottom: 0;
+                                }                       
+                                a {
+                                    font-size: 12px;
+                                    text-transform: none;
+                                    color: #333333;
+                                    font-weight: 300;
+                                }                        
+                            }
+                        }                        
+                    }  
+                }                                   
+            }
+
+            ul {
+                .acordeon-garantias {
+                    padding-left: 10px;
+                    border-left: 2px solid #767676;
+                    li {                            
+                        padding: 0.75rem  0 0.75rem 0;
+                        &:last-child {
+                            border-bottom: 0;
+                        }                       
+                        a {
+                           font-size: 12px;
+                           text-transform: none;
+                           color: #333333 !important;
+                           font-weight: 300;
+                        }                        
+                    }                    
+                }
+                .link-login, .link-orders {
+                    padding: 0.75rem 0 0.75rem 0;
+                    a {
+                        text-transform: uppercase;
+                        padding: 5px 10px !important;
+                        color: #333333;
+                        font-weight: 600;
+                        font-size: 13px;
+                    }                    
+                }                
+            }
+        }
+    }
+}

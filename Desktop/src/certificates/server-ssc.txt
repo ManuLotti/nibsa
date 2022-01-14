@@ -1,0 +1,28 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = dn
+
+[dn]
+C=AR
+ST=Buenos Aires
+L=Buenos Aires
+O=Brandlive
+OU=Desarrollo
+emailAddress=vtex@brandlive.net
+CN=nikecl.myvtex.com
+
+[req_ext]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = nibsa.vtexlocal.com.br
+DNS.2 = *.nibsa.vtexlocal.com.br
+DNS.3 = nibsa.vtexcommercestable.com.br
+DNS.4 = *.nibsa.vtexcommercestable.com.br
+DNS.5 = nibsa.vtexcommercebeta.com.br
+DNS.6 = *.nibsa.vtexcommercebeta.com.br
+DNS.7 = nibsa.myvtex.com
+DNS.8 = *.nibsa.myvtex.com

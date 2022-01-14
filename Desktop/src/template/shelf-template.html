@@ -1,0 +1,258 @@
+#set($id = $product.Id)
+#set($idSku = $product.productVariantId)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+#if ($product.IsInStock)
+<div id="product-$id" class="box-item">
+#else
+<div id="product-$id" class="box-item product-off">
+#end
+
+<div class="hightLight">$product.DiscountHightLight $product.HightLight</div>
+
+    #if ($product.HasBestPrice) <span class="discount ofert-flag"></span>#end 
+    
+    <div class="product-image" title="$escapedName" href="$uri">$product.GetImageTag(2)</div>
+    
+    <div class="product-name"><a href="$uri">$product.Name</a></div>    
+    
+    #if ($product.IsInStock)
+      <div class="price">
+            #if ($product.HasBestPrice)
+          <span class="old-price">
+                    $product.ListPrice
+                </span>
+                <span class="best-price sale">
+                    $product.BestPrice
+                </span>
+            #else
+                <span class="best-price">
+                    $product.BestPrice
+                </span>                    
+            #end   
+      </div>
+
+        <!-- Remove Decimals from prices & discount -->
+        <script>
+            if (typeof window.replaceDecimals === 'undefined') {
+
+              function replaceDecimals(priceString, elementsArray, isDiscount) {
+
+                if (priceString) {
+
+                  if (isDiscount) {
+                    priceString = priceString
+                      .replace(/\s/, '')
+                      .replace('%', '')
+                      .replace(',', '.');
+
+                    priceString = Math.trunc(Number(priceString)) + '%';
+
+                  } else {
+                    priceString = priceString.replace(/\s/, '').replace(",00", '');
+                  }
+
+                  for (var i = 0, len = elementsArray.length; i < len; i++) {
+                    elementsArray[i].innerHTML = priceString;
+                  }
+
+                }
+
+              };
+
+            }
+        
+            replaceDecimals("$product.BestPrice", document.querySelectorAll("#product-$id .best-price"));
+
+            #if ($product.HasBestPrice)
+              replaceDecimals("$product.ListPrice", document.querySelectorAll("#product-$id .old-price"));
+              replaceDecimals("$product.ListPriceMinusBestPriceInPercent", document.querySelectorAll("#product-$id .discount"), true);
+            #end
+
+        </script>
+
+        <div class="buyInGrid">
+
+          <div class="grid-qty-selector" style="display: none;">
+              <button class="subs">-</button>          
+              <input type="number" value="1" data-maxqty="{{MAXQTY}}" data-sku="{{SKUID}}" data-seller="{{SELLERID}}"  />
+              <button class="adds">+</button>
+          </div>
+          <!-- Quantity Selector -->
+
+          <button class="grid-buy-button">Comprar</button>
+
+        </div>
+        <!-- Buy In Grid -->
+
+        <script>
+
+          // Add / Remove Quantity
+          if (typeof window._quantityGridSetup === 'undefined') {
+
+              function _quantityGridSetup(productID) {
+
+                        // -- Get SKU Info
+                  vtexjs.catalog.getProductWithVariations(productID).done(function(product) {
+                    console.log(product);
+                    
+                      // Set SKU with the Maximum Stock available
+                      var _maxStockQty = 0;
+                      var _maxStockSku = '';
+                      var _maxStockSeller = '';
+
+                      product.skus.forEach(function(sku, index) {
+
+                          if ( sku.available && sku.availablequantity > _maxStockQty ) {
+                              _maxStockQty = sku.availablequantity;
+                              _maxStockSku = sku.sku;
+                              _maxStockSeller = sku.sellerId;
+                          }
+
+                      });
+
+                      // --- Quantity
+                      jQuery('#product-'+productID+' .buyInGrid .grid-qty-selector input').attr('data-maxqty', _maxStockQty);
+                      // --- SKU ID
+                      jQuery('#product-'+productID+' .buyInGrid .grid-qty-selector input').attr('data-sku', _maxStockSku);
+                      // --- SELLER ID
+                      jQuery('#product-'+productID+' .buyInGrid .grid-qty-selector input').attr('data-seller', _maxStockSeller);
+
+                  });
+
+              } // End of Function Declaration
+
+              // Actions - Should be declared one beacuse of ON handler
+              
+
+              // -- Buy Button Actions
+              jQuery(document).on('click', '.box-item .buyInGrid .grid-buy-button', function() {
+
+                  setTimeout(function() {
+                    jQuery('header').addClass('open');
+                    jQuery('#mini-cart-holder-full').addClass('open');
+                  },100);
+                  // Loading
+                  jQuery(this).addClass('loading');
+                  var _input = jQuery(this).siblings('.grid-qty-selector').find('input');
+                  var _qtySelector = jQuery(this).siblings('.grid-qty-selector');              
+
+                  // Update Item Qty if it's added
+                  if ( _input.hasClass('added') ) {
+              
+                    vtexjs.checkout.orderForm.items.forEach(function(item, index) {
+                      if ( item.id == Number(_input.attr('data-sku')) ) {
+                        var prevValue = Number( _input.val() );
+                        var _itemToUpdate = [{
+                          index: index,
+                          quantity: Number( _input.val() )
+                        }];
+                        vtexjs.checkout.updateItems(_itemToUpdate, null, false).done( function(response) {
+                          NIBSA.TOOLS.constructMC("#mini-cart-holder-full .items", true);
+                          // Remove Added Status
+                          if ( Number( _input.val() ) === 0 ) _input.removeClass('added');
+                          if(prevValue > Number( _input.val() )){
+                            _qtySelector.addClass('nostock');
+                            setTimeout(function(){
+                              console.log(_qtySelector,'elselector')
+                              _qtySelector.removeClass('nostock');
+                            },1000)
+                          }
+                          // Remove Loading
+                          jQuery(this).removeClass('loading');
+                        });                  
+                      }
+                    });
+                
+
+                  } else {
+
+                      if ( Number( _input.val() ) > 0 ) {
+
+                          // if not, add to Cart
+                          var item = [{
+                              id: Number(_input.attr('data-sku')),
+                              quantity: Number( _input.val() ),
+                              seller: Number(_input.attr('data-seller'))
+                          }];
+
+                          // AddToCart Handling
+                          vtexjs.checkout.addToCart(item, null, jssalesChannel)
+                          .fail(function(orderForm) {
+                              console.log('AddToCart - Failed');
+                              // Remove Loading
+                              jQuery(this).removeClass('loading');
+                          })
+                          .done(function(orderForm) {
+                              // ReForge Minicart
+                              NIBSA.TOOLS.constructMC("#mini-cart-holder-full .items", true);
+                              // Put Added Status
+                              _input.addClass('added');
+                              // Remove Loading
+                              jQuery(this).removeClass('loading');
+                          });
+                      }
+                  }
+
+              });
+              // -- Buy Button Actions
+
+
+              // -- Quantity Actions
+              jQuery(document).on('click', '.box-item .buyInGrid .grid-qty-selector button', function(){
+
+                  var _input = jQuery(this).siblings('input'),
+                      _maxQtyProd = _input.attr('data-maxqty'),
+                      _currentQty = Number( _input.val() ),
+                      _newQty = _currentQty;
+
+                  if ( jQuery(this).hasClass('adds') ) _newQty++;
+
+                  if ( jQuery(this).hasClass('subs') && _currentQty > 0 ) _newQty--;
+
+                  if( _newQty > _maxQtyProd ){
+                      _newQty = _maxQtyProd;
+                      _self = this;
+                      _self.item = $(this).parent();
+                      _self.item.toggleClass('nostock');
+                      setTimeout(function(){
+                          console.log('dentro del timeout');
+                          _self.item.toggleClass('nostock');
+                      },1000)
+                  } 
+                  _input.val(_newQty).trigger('input').trigger('change');
+
+                  jQuery(this).parent().siblings('.grid-buy-button').trigger('click');
+                  
+              });
+              // -- Quantity Actions
+                jQuery(document).on('keyup', '.box-item .buyInGrid .grid-qty-selector input', function(){
+                  var _maxQtyProd = jQuery(this).attr('data-maxqty'),
+                      _currentQty = Number( jQuery(this).val() );
+                  console.log(_currentQty,'qty');
+                  console.log(_maxQtyProd,'maxqty');
+                  if( _currentQty > _maxQtyProd ) {
+                      _currentQty = _maxQtyProd;
+                       _self = this;
+                      _self.item = $(this).parent();
+                      _self.item.toggleClass('nostock');
+                      setTimeout(function(){
+                          console.log('dentro del timeout');
+                          _self.item.toggleClass('nostock');
+                      },1000)
+                  } 
+                  jQuery(this).parent().siblings('.grid-buy-button').trigger('click');
+              })  
+          }
+          // _quantityGridSetup()
+
+          _quantityGridSetup($id);
+        
+        </script>
+
+
+  #else
+    <span class="out-of-stock">Producto agotado</span> 
+  #end
+</div>
