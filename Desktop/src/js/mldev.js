@@ -2,6 +2,86 @@
 //var mobileBreakpoint = 991,
 //    isMobile;
 
+
+//Cookie management
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    createCookie(name,"",-1);
+}
+
+
+jQuery(document).ready(function(){
+
+    //Newsletter Popup Logic
+    function newsletterPopupOpen() {
+      jQuery('#newsletter-popup-wrapper').show(0, function(){
+        jQuery(this).css({'display': 'block' });        
+      });
+    }
+  
+    function newsletterPopupClose(e) {
+
+        var _closer = function() {
+          jQuery('#newsletter-popup-wrapper').hide(0, function(){
+            jQuery(this).css({'display': 'none'});
+          });          
+        }
+
+        jQuery('#newsletter-popup-wrapper .closemodal').click(function(){
+	        jQuery("#newsletter-popup-wrapper").css({'display': 'none' });	        
+	      });
+
+        if(e.target.className === "newsletter-title") {
+            _closer();
+            return;
+        } else {
+          if (
+            jQuery('#newsletter-popup-wrapper .newsletter')[0].contains(e.target) || 
+            e.target.className === "btn-ok newsletter-button-ok" || 
+            e.target.className === "bt-voltar newsletter-button-back"        
+            ){
+            // Clicked inside Element
+          } else { _closer(); }
+        }
+    }
+    // newsletterPopupClose
+
+    //Cookie based Open
+    if(!readCookie("visited")) {
+    //  createCookie("visited",1,0);
+      newsletterPopupOpen();
+    }
+
+    //------------------------------------------------------Newsletter Popup Logic
+  
+    //Click Outside Listener
+    window.addEventListener('click', function(e){
+      if (document.body.id === 'new-home-page') { newsletterPopupClose(e); }
+    });
+    //------------------------------------------------------Click Outside Listener
+
+});
+
 NIBSA = {
 	TOOLS: {
 		formatPrice: function(number, thousands, decimals, length, currency) {
