@@ -322,3 +322,123 @@
   }  
 }
 
+
+#newsletter-popup-wrapper{
+  &:before {
+    content: "";
+    background: #ffffff94;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+  div#fancyhome {
+      position: fixed;
+      left: 0px;
+      right: 0px;
+      margin: 0px auto;
+      width: 500px;
+      height: 500px;
+      z-index: 9999;
+      top: 100px;
+      padding: 10px;
+      display: flex;
+      align-items: flex-end;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(/arquivos/NIBSA_PRE-CYBER-DAY.png);
+      background-size: cover;
+      @media (max-width:499px){
+        width: 96%;
+        top: 50px;
+        padding: 10px;
+        background-image: url(/arquivos/NIBSA_PRE-CYBER-DAY-MOVIL.png);
+      }
+      form {
+        position: relative;
+      }
+      .closemodal {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 20px;
+          background: #fff;
+          width: 30px;
+          height: 30px;
+          line-height: 27px;
+          text-align: center;
+          border-radius: 100%;
+          cursor: pointer;
+      }
+      .alert {
+          padding: 5px;
+          font-size: 14px;     
+          width: 100%;
+          text-align: center;
+          margin-bottom: 5px;     
+          @media (max-width:499px){
+            position: absolute;            
+            bottom: 0px;
+            box-sizing: border-box;
+            margin: 0;            
+            line-height: 13px;
+          }
+      }
+      .row {
+          margin: 0;
+          fieldset {
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+              align-items: center;
+              @media (max-width:499px){
+                flex-direction: column;
+              }
+              input {
+                  width: 48%;
+                  background: #ffffff6e;
+                  border: 0;
+                  margin: 0 1% 10px 1%;
+                  line-height: 30px;
+                  height: 30px;
+                  min-height: 30px;
+                  padding: 0 10px;
+                  color: #000;
+                  @media (max-width:499px){
+                    width: 100%;
+                    margin-bottom: 5px;
+                    line-height: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                  }
+              }
+              button {
+                  border: 1px solid #016cbc;
+                  background: #fff;
+                  color: #016cbc;
+                  border-radius: 30px;
+                  padding: 5px 15px;
+                  margin-bottom: 10px;
+                  font-size: 16px;
+                  @media (max-width:499px){
+                    margin-bottom: 5px;
+                  }
+              } 
+          }
+          p {
+              color: #fff;
+              font-size: 12px;
+              text-align: center;
+              @media (max-width:499px){
+                font-size: 10px;
+              }
+              strong {
+                  font-weight: 700;
+              }
+          }
+      }
+
+  }
+}

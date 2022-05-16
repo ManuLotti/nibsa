@@ -35,7 +35,8 @@ jQuery(document).ready(function(){
     //Newsletter Popup Logic
     function newsletterPopupOpen() {
       jQuery('#newsletter-popup-wrapper').show(0, function(){
-        jQuery(this).css({'display': 'block' });        
+        jQuery(this).css({'display': 'block' }); 
+        jQuery('body').css({"overflow": 'hidden'});       
       });
     }
   
@@ -45,10 +46,12 @@ jQuery(document).ready(function(){
           jQuery('#newsletter-popup-wrapper').hide(0, function(){
             jQuery(this).css({'display': 'none'});
           });          
+          jQuery('body').css({'overflow': ''});
         }
 
         jQuery('#newsletter-popup-wrapper .closemodal').click(function(){
-	        jQuery("#newsletter-popup-wrapper").css({'display': 'none' });	        
+	        jQuery("#newsletter-popup-wrapper").css({'display': 'none' });	 
+	        jQuery('body').css({'overflow': ''});       
 	      });
 
         if(e.target.className === "newsletter-title") {
